@@ -2,7 +2,6 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/user.rb'
 require './lib/message.rb'
-require 'pg'
 
 class Natter < Sinatra::Base
   enable :sessions
@@ -26,8 +25,7 @@ class Natter < Sinatra::Base
 
   post '/messages' do
     text = params[:text]
-    con = PG.connect(dbname: 'natter_test')
-    con.exec("INSERT INTO messages (text) VALUES ('#{text}')")
+    Message.create("#{text}")
     redirect('/messages')
   end
 
