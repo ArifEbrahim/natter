@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/user.rb'
+require './lib/message.rb'
 
 class Natter < Sinatra::Base
   enable :sessions
@@ -14,7 +15,7 @@ class Natter < Sinatra::Base
 
   get '/messages' do
     @user = User.find(session[:user_id])
-    @message = session[:message]    
+    @messages = Message.all    
     erb(:'messages/index')
   end
 
@@ -23,7 +24,6 @@ class Natter < Sinatra::Base
   end
 
   post '/messages' do
-    session[:message] = params[:message]
     redirect('/messages')
   end
 
