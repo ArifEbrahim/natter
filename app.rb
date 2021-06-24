@@ -14,7 +14,17 @@ class Natter < Sinatra::Base
 
   get '/messages' do
     @user = User.find(session[:user_id])
-    erb(:'message/index')
+    @message = session[:message]    
+    erb(:'messages/index')
+  end
+
+  get '/messages/new' do
+    erb(:'messages/new')
+  end
+
+  post '/messages' do
+    session[:message] = params[:message]
+    redirect('/messages')
   end
 
   get '/users/new' do
