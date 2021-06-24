@@ -2,5 +2,5 @@ require 'pg'
 
 def setup_test_database
   con = PG.connect(dbname: 'natter_test')
-  con.exec("TRUNCATE users;")
+  con.exec("TRUNCATE users, messages;")
 end
