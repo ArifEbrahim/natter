@@ -34,7 +34,7 @@ class Natter < Sinatra::Base
   end
   
   post '/users' do
-    user = User.create(user_name: params[full_name], email: params[email], password: params[password])
+    user = User.create(full_name: params[:full_name], email: params[:email], password: params[:password])
     session[:user_id] = user.id
     redirect('/messages')
   end
