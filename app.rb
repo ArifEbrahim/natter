@@ -10,7 +10,7 @@ class Natter < Sinatra::Base
   end
 
   get '/' do
-    'Hello World'
+    redirect('/users/new')
   end
 
   get '/messages' do
