@@ -15,6 +15,7 @@ class Natter < Sinatra::Base
 
   get '/messages' do
     @user = User.find(session[:user_id])
+    redirect('/users/new') unless @user
     @messages = Message.all    
     erb(:'messages/index')
   end

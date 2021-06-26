@@ -4,6 +4,8 @@
 
 feature 'Posting a new message' do
   scenario 'user can post a message on natter' do
+    sign_up
+    
     visit('/messages/new')
     fill_in('text', with: 'This is my first peep!')
     click_button('Submit')
