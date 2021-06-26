@@ -9,8 +9,8 @@ class Message
     end
 
     result = con.exec("SELECT * FROM messages;")
-    result.map{ |message| message['text'] }
-
+    display = result.map{ |message| message['text'] }
+    display.reverse
   end
 
   def self.create(text)
