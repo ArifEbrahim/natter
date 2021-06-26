@@ -14,7 +14,7 @@
     <h2>Peeps: </h2>
     <ul>
       <% @messages.each do |message| %>
-        <li><%= "#{message.time_stamp} - #{message.text}" %> </li>
+        <li><%= "#{message.time_stamp} - #{message.full_name} - #{message.text}" %> </li>
         <% end %>
     </ul> 
   </body>

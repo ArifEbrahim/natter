@@ -26,7 +26,8 @@ class Natter < Sinatra::Base
 
   post '/messages' do
     time_stamp = Time.now.strftime("%k:%M %d/%m/%Y")
-    Message.create(text: "#{params['text']}", time_stamp: time_stamp)
+    user = User.find(session[:user_id])
+    Message.create(text: "#{params['text']}", time_stamp: time_stamp, full_name: user.full_name)
     redirect('/messages')
   end
 
