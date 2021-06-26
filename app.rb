@@ -24,8 +24,7 @@ class Natter < Sinatra::Base
   end
 
   post '/messages' do
-    text = params[:text]
-    Message.create("#{text}")
+    Message.create(text: "#{params['text']}")
     redirect('/messages')
   end
 

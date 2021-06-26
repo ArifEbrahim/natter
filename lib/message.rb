@@ -13,7 +13,7 @@ class Message
     display.reverse
   end
 
-  def self.create(text)
+  def self.create(text:)
     if ENV['ENVIRONMENT'] == 'test'
       con = PG.connect(dbname: 'natter_test')
     else

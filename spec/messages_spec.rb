@@ -3,8 +3,8 @@ require './lib/message.rb'
 describe Message do
   describe '.all' do
     it 'returns all messages' do
-      Message.create("This is my first peep!")
-      Message.create("Second peep!")
+      Message.create(text: 'This is my first peep!')
+      Message.create(text: 'Second peep!')
 
       messages = Message.all
 
@@ -15,7 +15,7 @@ describe Message do
 
   describe '.create' do
     it 'creates a new message' do
-      Message.create('Test peep')
+      Message.create(text: 'Test peep')
       messages = Message.all
 
       expect(messages).to include('Test peep')
