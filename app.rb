@@ -24,7 +24,8 @@ class Natter < Sinatra::Base
   end
 
   post '/messages' do
-    Message.create(text: "#{params['text']}")
+    time_stamp = Time.now.strftime("%k:%M %d/%m/%Y")
+    Message.create(text: "#{params['text']}", time_stamp: time_stamp)
     redirect('/messages')
   end
 

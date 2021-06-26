@@ -1,24 +1,33 @@
 require './lib/message.rb'
+require 'database_helpers'
 
 describe Message do
   describe '.all' do
-    it 'returns all messages' do
-      Message.create(text: 'This is my first peep!')
-      Message.create(text: 'Second peep!')
+    it 'returns a list of messages' do
+      Message.create(text: 'This is my first peep!', time_stamp: '13:00 01/01/2021')
+      Message.create(text: 'Second peep!', time_stamp: '14:00 02/02/2021')
+      message = Message.create(text: 'Third peep peeps!', time_stamp: '15:00 03/03/2021')
 
       messages = Message.all
 
-      expect(messages).to include('This is my first peep!')
-      expect(messages).to include('Second peep!')
+      expect(messages.length).to eq(3)
+      expect(messages.first).to be_a(Message)
+      expect(messages.first.id).to eq(message.id)
+      expect(messages.first.text).to eq('Third peep peeps!')
+      expect(messages.first.time_stamp).to eq('15:00 03/03/2021')
+   
     end
   end
 
   describe '.create' do
     it 'creates a new message' do
-      Message.create(text: 'Test peep')
-      messages = Message.all
+      message = Message.create(text: 'Test peep', time_stamp: '13:00 01/01/2021')
+      persisted_data = persisted_data(id: message.id)
 
-      expect(messages).to include('Test peep')
+      expect(message).to be_a(Message)
+      expect(message.id).to eq(persisted_data['id'])
+      expect(message.text).to eq('Test peep')
+      expect(message.time_stamp).to eq('13:00 01/01/2021')
     end
   end
 end

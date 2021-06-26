@@ -1,11 +1,18 @@
-<% if @user %>
-  <h1>Welcome, <%= @user.full_name %></h1>
-<% end %>
+<!doctype html>
 
-<h2>Peeps: </h2>
-
-<ul>
-  <% @messages.each do |message| %>
-    <li><%= message %> </li>
+<html>
+  <head>
+    <title>Natter</title>
+  </head>
+  <body>
+    <% if @user %>
+      <h1>Welcome, <%= @user.full_name %></h1>
     <% end %>
-</ul> 
+    <h2>Peeps: </h2>
+    <ul>
+      <% @messages.each do |message| %>
+        <li><%= "#{message.time_stamp} - #{message.text}" %> </li>
+        <% end %>
+    </ul> 
+  </body>
+</html>
