@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/user.rb'
 require './lib/message.rb'
+require './database_connection_setup'
 
 class Natter < Sinatra::Base
   enable :sessions
