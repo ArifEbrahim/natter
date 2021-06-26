@@ -1,4 +1,5 @@
 require 'bcrypt'
+require './lib/database_connection.rb'
 
 class User
   def self.create(full_name:, email:, password:)

@@ -1,28 +1,34 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/flash'
 require './lib/user.rb'
 require './lib/message.rb'
-require './database_connection_setup'
+require './database_connection_setup.rb'
 
 class Natter < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
   configure :development do
     register Sinatra::Reloader
   end
 
   get '/' do
-    redirect('/users/new')
+    redirect('/messages')
   end
 
   get '/messages' do
     @user = User.find(session[:user_id])
-    redirect('/users/new') unless @user
     @messages = Message.all    
     erb(:'messages/index')
   end
 
   get '/messages/new' do
-    erb(:'messages/new')
+    unless session[:user_id]
+      flash[:notice] = 'Please sign up to post a peep'
+      redirect('/messages')
+    else
+      erb(:'messages/new')
+    end
   end
 
   post '/messages' do

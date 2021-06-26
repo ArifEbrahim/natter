@@ -11,4 +11,10 @@ feature 'Posting a new message' do
     click_button('Submit')
     expect(page).to have_content('This is my first peep!')
   end
+
+  scenario 'Users cannot post a message without signing in' do
+    visit('/messages/new')
+    expect(page).to have_content('Please sign up to post a peep')
+  end
+
 end

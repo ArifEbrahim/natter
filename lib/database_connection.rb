@@ -2,11 +2,10 @@ require 'pg'
 
 class DatabaseConnection
   def self.setup(dbname)
-    @connection = PG.connect(dbname: dbname)
+    @con = PG.connect(dbname: dbname)
   end
 
-  def self.query(sql)
-    @connection.exec(sql)
+  def self.query(sql) 
+    @con.exec(sql)
   end
-
 end

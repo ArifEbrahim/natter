@@ -1,4 +1,4 @@
-require 'database_connection'
+require './lib/database_connection.rb'
 
 class Message
   def self.all
@@ -7,7 +7,6 @@ class Message
       Message.new(text: message['text'], time_stamp: message['time_stamp'], id: message['id'], full_name: message['full_name'])
     end
     display.reverse
-
   end
 
   def self.create(text:, time_stamp:, full_name:)

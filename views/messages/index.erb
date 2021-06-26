@@ -11,11 +11,17 @@
     <form action="/messages/new" method="get">
       <input type="submit" value="New peep">
     </form>
+    <form action="/users/new" method="get">
+      <input type="submit" value="Sign up">
+    </form>
     <h2>Peeps: </h2>
     <ul>
       <% @messages.each do |message| %>
         <li><%= "#{message.time_stamp} - #{message.full_name} - #{message.text}" %> </li>
         <% end %>
     </ul> 
+    <p>
+      <strong><%= flash[:notice] %></strong>
+    </p>  
   </body>
 </html>

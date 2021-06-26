@@ -4,8 +4,6 @@ feature 'viewing messages' do
   # I want to see all peeps in reverse chronological order
 
   scenario 'users can see messages in reverse chronological order' do
-    sign_up
-
     Message.create(text: 'This is my first peep!', time_stamp: '13:00 01/01/2021', full_name: 'Bob Smith')
     Message.create(text: 'Second peep!', time_stamp: '14:00 02/02/2021', full_name: 'Bob Smith')
     Message.create(text: 'Third peep peeps!', time_stamp: '15:00 03/03/2021', full_name: 'Bob Smith')
@@ -24,8 +22,6 @@ feature 'viewing messages' do
   # I want to see the time at which it was made
 
   scenario 'users can see the time at which a message was created' do
-    sign_up
-
     Message.create(text: 'This is my first peep!', time_stamp: '13:00 01/01/2021', full_name: 'Bob Smith')
 
     visit('/messages')
@@ -33,8 +29,6 @@ feature 'viewing messages' do
   end
 
   scenario 'users can see the name of the person who posted' do
-    sign_up
-
     Message.create(text: 'This is my first peep!', time_stamp: '13:00 01/01/2021', full_name: 'George Bush')
 
     visit('/messages')
