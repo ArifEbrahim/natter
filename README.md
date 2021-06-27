@@ -101,6 +101,7 @@ I want to sign up for Chitter
 ## Improvements
 
 Time permitting, I would like to have worked on the following:
+- implement login and logout functionality 
 - linking the message and user databases with a common user full_name
 - improving the styling of the views
 - testing edge cases 
