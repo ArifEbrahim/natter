@@ -63,4 +63,10 @@ class Natter < Sinatra::Base
     end
   end
 
+  post '/sessions/destroy' do
+    session.clear
+    flash[:notice] = 'You have signed out.'
+    redirect('/messages')
+  end
+
 end

@@ -17,6 +17,9 @@
     <form action="/sessions/new" method="get">
       <input type="submit" value="Sign in">
     </form>
+    <form action="/sessions/destroy" method="post">
+      <input type="submit" value="Sign out" />
+    </form>
     <h2>Peeps: </h2>
     <ul>
       <% @messages.each do |message| %>
