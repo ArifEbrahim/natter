@@ -22,4 +22,9 @@ class User
     User.new(id: result[0]['id'], full_name: result[0]['full_name'])
   end
 
+  def self.authenticate(email:, password:)
+    result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}';")
+    User.new(id: result[0]['id'], full_name: result[0]['full_name'])
+  end
+
 end
