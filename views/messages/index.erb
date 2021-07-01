@@ -7,19 +7,24 @@
   <body>
     <% if @user %>
       <h1>Welcome, <%= @user.full_name %>!</h1>
+      <form action="/sessions/destroy" method="post">
+        <input type="submit" value="Sign out" />
+      </form>
+      <form action="/messages/new" method="get">
+        <input type="submit" value="New peep">
+      </form>
+    <% else %>
+      <p>
+        <strong>Please sign up or sign in to post a peep</strong><br>
+      </p>  
+      <form action="/users/new" method="get">
+        <input type="submit" value="Sign up">
+      </form>
+      <form action="/sessions/new" method="get">
+        <input type="submit" value="Sign in">
+      </form>
     <% end %>
-    <form action="/messages/new" method="get">
-      <input type="submit" value="New peep">
-    </form>
-    <form action="/users/new" method="get">
-      <input type="submit" value="Sign up">
-    </form>
-    <form action="/sessions/new" method="get">
-      <input type="submit" value="Sign in">
-    </form>
-    <form action="/sessions/destroy" method="post">
-      <input type="submit" value="Sign out" />
-    </form>
+
     <h2>Peeps: </h2>
     <ul>
       <% @messages.each do |message| %>

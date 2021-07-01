@@ -62,7 +62,7 @@ In the command line, navigate to the root folder and run Rack with the following
 rackup 
 ```
 
-To view peeps, navigate to `localhost:9292/messages` in you r web browser.
+To view peeps, navigate to `localhost:9292/messages` in your web browser.
 
 #### To run tests:
 
@@ -74,7 +74,7 @@ rspec
 
 The following is a screenshot of the test output:
 
-![tests](./images/tests.png)
+![tests](./images/new_tests.png)
 
 ## User stories 
 
@@ -96,12 +96,19 @@ I want to see the time at which it was made
 As a Maker
 So that I can post messages on Chitter as me
 I want to sign up for Chitter
+
+As a Maker
+So that only I can post messages on Chitter as me
+I want to log in to Chitter
+
+As a Maker
+So that I can avoid others posting messages on Chitter as me
+I want to log out of Chitter
 ```
 
 ## Improvements
 
 Time permitting, I would like to have worked on the following:
-- implement login and logout functionality 
 - linking the message and user databases with a common user full_name
 - improving the styling of the views
 - testing edge cases 

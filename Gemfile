@@ -9,3 +9,5 @@ gem 'rspec'
 gem 'rubocop'
 gem 'bcrypt'
 gem 'sinatra-flash'
+gem 'simplecov', require: false, group: :test
+gem 'simplecov-console', require: false, group: :test
