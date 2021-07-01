@@ -25,20 +25,25 @@ RSpec.describe User do
       result = User.find(user.id)
   
       expect(result.id).to eq user.id
-      expect(result.full_name).to eq user.full_name
+      expect(result.full_name).to eq(user.full_name)
     end
 
     it 'returns nil if there is no ID given' do
-      expect(User.find(nil)).to eq nil
+      expect(User.find(nil)).to eq(nil)
     end
   end
 
   describe '.authenticate' do
     it 'returns a user if one exists' do
       user = User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'pasword123')
-      authenticated_user = User.authenticate(email: 'test@example.com', password: 'pasword123' )
+      authenticated_user = User.authenticate(email: 'test@example.com', password: 'pasword123')
 
       expect(authenticated_user.id).to eq(user.id)
+    end
+
+    it 'returns nil when the email address is incorrect' do
+      user = User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'pasword123')
+      expect(User.authenticate(email: 'wrong_email@example.com', password: 'pasword123')).to eq(nil)
     end
   end
 
