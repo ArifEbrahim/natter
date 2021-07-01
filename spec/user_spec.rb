@@ -45,6 +45,12 @@ RSpec.describe User do
       user = User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'pasword123')
       expect(User.authenticate(email: 'wrong_email@example.com', password: 'pasword123')).to eq(nil)
     end
+
+    it 'returns nil when the password is incorrect' do
+      user = User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'pasword123')
+      expect(User.authenticate(email: 'test@example.com', password: 'wrong123')).to eq(nil)
+    end
+
   end
 
 end

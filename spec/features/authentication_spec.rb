@@ -6,7 +6,7 @@
 feature 'authentication' do
 
   it 'a user can sign in' do
-    User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'pasword123')
+    User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'password123')
 
     visit '/sessions/new'
     fill_in(:email, with: 'test@example.com')
@@ -18,7 +18,7 @@ feature 'authentication' do
 
 
   scenario 'user enters incorrect email' do
-    User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'pasword123')
+    User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'password123')
 
     visit '/sessions/new'
     fill_in(:email, with: 'wrong_email@example.com')
@@ -30,8 +30,17 @@ feature 'authentication' do
 
   end
 
+  scenario 'user enters incorrect password' do
+    User.create(full_name: 'Peter Rabbit', email: 'test@example.com', password: 'password123')
 
+    visit '/sessions/new'
+    fill_in(:email, with: 'test@example.com')
+    fill_in(:password, with: 'wrong123')
+    click_button('Sign in')
 
+    expect(page).not_to have_content('Welcome, Peter Rabbit!')
+    expect(page).to have_content('Please check your email or password.')
+  end
 
 end
 
